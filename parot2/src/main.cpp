@@ -1,5 +1,4 @@
-
-#define VERSION "2.01"
+#define VERSION "2.02"
 #include <Arduino.h>
 #include <EEPROM.h>
 
@@ -133,7 +132,7 @@ void loop() {
       te=millis()-ts;
       digitalWrite(PTT,HIGH);
       digitalWrite(LED,HIGH);
-      if(te>1000*parms.tot){
+      if(parms.tot!=0xffff && te>1000*parms.tot){
         state=rst;
       }
       switch(button()){
