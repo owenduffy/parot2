@@ -25,6 +25,13 @@
 #define PTT 6 //PB1 8
 #define LED 1 //PA5 3
 #endif //ARDUINO_attinyxy4
+#if defined(ARDUINO_AVR_ATTINYX5)
+//pins
+#define BUTTON 3 //PB3 2
+#define PWR 2 //PB2 7
+#define PTT 4 //PB4 3
+#define LED 0 //PB0 5
+#endif //ARDUINO_AVR_ATTINYX5
 
 enum statet{rst,off,heat,on,cool};
 statet state=rst;
@@ -33,7 +40,7 @@ unsigned long ts=0,te;
 struct{
   char ever=0;
   uint16_t opt;
-  char sl;
+  unsigned char sl;
   uint16_t hdt;
   uint16_t tot;
   uint16_t cdt;
@@ -47,15 +54,16 @@ buttont button(){
   t0=millis();
   while(1){
     if(state==0 && digitalRead(BUTTON))return n;
+    digitalWrite(LED,HIGH);
     if(state==0){
       t1=millis()-t0;
       if(t1>parms.sl)state=1;
     }
     if(state==1){
       while(!digitalRead(BUTTON));
-        t1=millis()-t0;
-        if(t1<10*parms.sl)return s;
-        return l;
+      t1=millis()-t0;
+      if(t1<10*parms.sl)return s;
+      return l;
     }
   }
 }
@@ -69,9 +77,9 @@ void setup(){
   }
   EEPROM.get(0,parms);
   pinMode(BUTTON,INPUT_PULLUP);
-  digitalWrite(PWR,HIGH);
-  digitalWrite(PTT,HIGH);
-  digitalWrite(LED,HIGH);
+  digitalWrite(PWR,LOW);
+  digitalWrite(PTT,LOW);
+  digitalWrite(LED,LOW);
   pinMode(LED,OUTPUT);
   pinMode(PWR,OUTPUT);
   pinMode(PTT,OUTPUT);
@@ -80,9 +88,9 @@ void setup(){
 void loop() {
   switch(state){
     case rst:
-    digitalWrite(LED,HIGH);
-    digitalWrite(PWR,HIGH);
-    digitalWrite(PTT,HIGH);
+    digitalWrite(LED,LOW);
+    digitalWrite(PWR,LOW);
+    digitalWrite(PTT,LOW);
     delay(parms.rct*1000);
     while(!digitalRead(BUTTON));
     state=off;
@@ -103,7 +111,7 @@ void loop() {
     case heat:
       te=millis()-ts;
       digitalWrite(LED,(te/100)&0x1);
-      digitalWrite(PWR,LOW);
+      digitalWrite(PWR,HIGH);
       switch(button()){
         case n:
           break;
@@ -123,8 +131,8 @@ void loop() {
       break;
     case on:
       te=millis()-ts;
-      digitalWrite(PTT,LOW);
-      digitalWrite(LED,LOW);
+      digitalWrite(PTT,HIGH);
+      digitalWrite(LED,HIGH);
       if(te>1000*parms.tot){
         state=rst;
       }
@@ -143,7 +151,7 @@ void loop() {
     case cool:
       te=millis()-ts;
       digitalWrite(LED,(te/500)&0x1);
-      digitalWrite(PTT,HIGH);
+      digitalWrite(PTT,LOW);
       if(te>1000*parms.cdt){
         state=rst;
         break;
