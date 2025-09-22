@@ -52,7 +52,10 @@ buttont button(){
   unsigned long t0,t1;
   t0=millis();
   while(1){
-    if(state==0 && digitalRead(BUTTON))return n;
+    if(state==0 && digitalRead(BUTTON)){
+      digitalWrite(LED,LOW);
+      return n;
+    }
     digitalWrite(LED,HIGH);
     if(state==0){
       t1=millis()-t0;
