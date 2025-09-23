@@ -136,7 +136,7 @@ void loop() {
       digitalWrite(PTT,HIGH);
       digitalWrite(LED,HIGH);
       if(parms.tot!=0xffff && te>1000*parms.tot){
-        state=rst;
+        state=cool;
       }
       switch(button()){
         case n:
