@@ -79,20 +79,21 @@ The following variants have been built and tested substantially:
 - transformerless DC power supply and 230VAC SSR with 3-24VDC control; and
 - breadboard ATTiny412.
 
-![PAROT #1](doc/parot100.jpg)
+![PAROT 1](doc/parot100.jpg)
 
 Above, the original prototype with conventional DC power supply and 230VAC relay with 12VDC coil and miniature DIL 5V relay for PTT control.
 
-![PAROT #2](doc/parot102.jpg)
+![PAROT 2](doc/parot102.jpg)
+
 Above, transformerless DC power supply and 230VAC relay with 230VAC coil driven by triac and opto isolator for PTT control.
 
-![PAROT #3](doc/parot108.jpg)
+![PAROT 2](doc/parot108.jpg)
 
 Above, transformerless DC power supply and 230VAC SSR with 3-24VDC control.
 
 These were all constructed initially using PAROT v1, and were upgraded to v2 simply by updating the firmware (same EEPROM image used).
 
-![PAROT #4](doc/parot110.jpg)
+![PAROT 4](doc/parot110.jpg)
 
 The ATTiny412 module above is pin compatible with the ATTiny25 pinout. If the module was constructed using machined pins, it would plug into a DIP8 socket.
 
