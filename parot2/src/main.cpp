@@ -8,11 +8,10 @@
 //UPDI PA0 (5) 6
 //TXD PA6 (0) 2
 //RXD PA7 (1) 3 - not used
-#define BUTTON 2 //PA1 4
-#define PWR 3 //PA2 5
-#define PTT 4 //PA3 7
-#define LED 1 //PA7 3
-//HardwareSerial &MySerial=Serial;
+#define BUTTON 0 //PA6 2
+#define PWR 4 //PA3 7
+#define PTT 1 //PA7 3
+#define LED 3 //PA2 5
 #endif //ARDUINO_AVR_ATtiny412
 #if defined(ARDUINO_attinyxy4)
 //pins
