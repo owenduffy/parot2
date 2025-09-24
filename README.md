@@ -75,8 +75,9 @@ avrdude -c serialupdi -p t1614 -P $(PORT) -b 115200 -e -v -x rtsdtr=low -Ufuse0:
 
 The following variants have been built and tested substantially:
 - conventional DC power supply and 230VAC relay with 12VDC coil and miniature DIL 5V relay for PTT control;
-- transformerless DC power supply and 230VAC relay with 230VAC coil driven by triac and opto isolator for PTT control; and
-- transformerless DC power supply and 230VAC SSR with 3-24VDC control.
+- transformerless DC power supply and 230VAC relay with 230VAC coil driven by triac and opto isolator for PTT control;
+- transformerless DC power supply and 230VAC SSR with 3-24VDC control; and
+- breadboard ATTiny412.
 
 ![PAROT #1](doc/parot100.jpg)
 
@@ -86,6 +87,11 @@ The following variants have been built and tested substantially:
 
 These were all constructed initially using PAROT v1, and were upgraded to v2 simply by updating the firmware (same EEPROM image used).
 
-Today, I would consider a Photomos to control PTT, and possibly in place of the triac above. The SSR is protected by a 430V MOV.
+![PAROT #3](doc/parot110.jpg)
+
+The ATTiny412 module above is pin compatible with the ATTiny25 pinout. If the module was constructed using machined pins, it would plug into a DIP8 socket.
+
+
+Today, I would consider a Photomos (eg AQY214EH) to control PTT, and possibly a AQY216EH in place of the triac above. The SSR is protected by a 430V MOV.
 
 
