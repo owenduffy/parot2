@@ -57,7 +57,7 @@ PAROT has three outputs:
 
 # Fuses
 
-Example avrdude commandsto configure fuses. These set BOD, do not use 5V BOD settings on a 3V target... it might not be easy to fix it.
+Example avrdude commands to configure fuses. These set BOD, do not use 5V BOD settings on a 3V target... it might not be easy to fix it.
 
 ## ATTiny25 5V
 
@@ -77,6 +77,12 @@ The following variants have been built and tested substantially:
 - conventional DC power supply and 230VAC relay with 12VDC coil and miniature DIL 5V relay for PTT control;
 - transformerless DC power supply and 230VAC relay with 230VAC coil driven by triac and opto isolator for PTT control; and
 - transformerless DC power supply and 230VAC SSR with 3-24VDC control.
+
+![PAROT #1](doc/parot100.jpg)
+
+![PAROT #2](doc/parot102.jpg)
+
+![PAROT #3](doc/parot108.jpg)
 
 These were all constructed initially using PAROT v1, and were upgraded to v2 simply by updating the firmware (same EEPROM image used).
 
